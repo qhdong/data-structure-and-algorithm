@@ -1,0 +1,8 @@
+//
+// Created by 董启宏 on 2016/10/12.
+//
+
+#ifndef DATA_STRUCTURE_AND_ALGORITHM_FIB_H
+#define DATA_STRUCTURE_AND_ALGORITHM_FIB_H
+long fib(int N);
+#endif //DATA_STRUCTURE_AND_ALGORITHM_FIB_H
