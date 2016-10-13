@@ -9,6 +9,8 @@
 #include "util.h"
 #include "fib.h"
 #include "binary_search.h"
+#include "gcd.h"
+#include "pow.h"
 
 void testMaxSubsequence() {
     printTestHeader("Test MaxSubsequence");
@@ -47,8 +49,27 @@ void testBinarySearch() {
     free(A);
 }
 
+void testGCD() {
+    printTestHeader("Test GCD");
+
+    const unsigned M = (unsigned) rand();
+    const unsigned N = (unsigned) rand();
+    printf("GCD(%u, %u) = %u\n", M, N, gcd(M, N));
+}
+
+void testPow() {
+    printTestHeader("Test Pow");
+    long X = 2;
+    unsigned long N = 11;
+    for (unsigned long i = 0; i < N; i++) {
+        printf("pow(%ld, %lu) = %lu\n", X, i, pow(X, i));
+    }
+}
+
 int main(void) {
     testMaxSubsequence();
     testBinarySearch();
     testFib();
+    testGCD();
+    testPow();
 }

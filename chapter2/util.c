@@ -51,3 +51,7 @@ void printTestHeader(char* s) {
     printf("%s\n", s);
     printf("=====================================\n");
 }
+
+bool isEven(long n) {
+    return (n & 1) ? false : true;
+}
