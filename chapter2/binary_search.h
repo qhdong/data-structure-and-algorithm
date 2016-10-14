@@ -5,6 +5,6 @@
 #ifndef DATA_STRUCTURE_AND_ALGORITHM_BINARY_SEARCH_H
 #define DATA_STRUCTURE_AND_ALGORITHM_BINARY_SEARCH_H
 
-int BinarySearch(const int A[], int X, int N);
-
+int BinarySearch(const int A[], int N, int X);
+int BinarySearchAi(const int A[], int N);
 #endif //DATA_STRUCTURE_AND_ALGORITHM_BINARY_SEARCH_H

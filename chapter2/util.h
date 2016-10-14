@@ -13,5 +13,9 @@ int* getLinearSequence(int N);
 void printArray(int A[], int N);
 void printTestHeader(char* s);
 bool isEven(long n);
-
+bool isOdd(long n);
+int randInt(int i, int j);
+bool isContain(int* A, int X, int N);
+void swap(int* a, int* b);
+unsigned int msb(unsigned long N);
 #endif //DATA_STRUCTURE_AND_ALGORITHM_UTIL_H

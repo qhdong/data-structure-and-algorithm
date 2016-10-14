@@ -4,5 +4,6 @@
 
 #ifndef DATA_STRUCTURE_AND_ALGORITHM_POW_H
 #define DATA_STRUCTURE_AND_ALGORITHM_POW_H
-long pow(long X, unsigned long N);
+long Pow(long X, unsigned long N);
+long PowRecursion(long X, unsigned long N);
 #endif //DATA_STRUCTURE_AND_ALGORITHM_POW_H

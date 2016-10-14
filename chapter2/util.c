@@ -55,3 +55,35 @@ void printTestHeader(char* s) {
 bool isEven(long n) {
     return (n & 1) ? false : true;
 }
+
+bool isOdd(long n) {
+    return (n & 1) ? true : false;
+}
+
+int randInt(int i, int j) {
+    return i + (rand() % (j-i+1));
+}
+
+bool isContain(int* A, int X, int N) {
+    for (int i = 0; i < N; ++i) {
+        if (A[i] == X) {
+            return true;
+        }
+    }
+    return false;
+}
+
+void swap(int* a, int* b) {
+    int tmp = *a;
+    *a = *b;
+    *b = tmp;
+}
+
+unsigned int msb(unsigned long N) {
+    unsigned int n = 0;
+    while (N) {
+        N >>= 1;
+        n += 1;
+    }
+    return n;
+}
