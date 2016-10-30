@@ -7,11 +7,6 @@
 #include <stdio.h>
 #include "linkedlist.h"
 
-struct Node {
-    ElementType element;
-    Position next;
-};
-
 bool isLast(Position P, List L) {
     return P->next == NULL ? true : false;
 }
@@ -99,4 +94,91 @@ List fromArray(ElementType* A, size_t N) {
         P = P->next;
     }
     return L;
+}
+
+Position header(List L) {
+    return L;
+}
+
+Position first(List L) {
+    return L->next;
+}
+
+Position advance(Position P) {
+    return P->next;
+}
+
+List intersect(List L1, List L2) {
+    List L = malloc(sizeof(struct Node));
+    Position P = L;
+
+    Position l1 = L1->next;
+    Position l2 = L2->next;
+    while (l1 != NULL && l2 != NULL) {
+        if (l1->element == l2->element) {
+            insert(l1->element, L, P);
+            P = advance(P);
+            l1 = advance(l1);
+            l2 = advance(l2);
+        } else if (l1->element < l2->element) {
+            l1 = advance(l1);
+        } else {
+            l2 = advance(l2);
+        }
+    }
+    return L;
+}
+
+List Union(List L1, List L2) {
+    List result = malloc(sizeof(struct Node));
+    Position resultPos = result;
+
+    Position l1 = first(L1);
+    Position l2 = first(L2);
+    while (l1 != NULL && l2 != NULL) {
+        if (l1->element < l2->element) {
+            insert(l1->element, result, resultPos);
+            resultPos = advance(resultPos);
+
+            l1 = advance(l1);
+        } else if (l2->element < l1->element) {
+            insert(l2->element, result, resultPos);
+            resultPos = advance(resultPos);
+            l2 = advance(l2);
+        } else {
+            insert(l1->element, result, resultPos);
+            resultPos = advance(resultPos);
+            l1 = advance(l1);
+            l2 = advance(l2);
+        }
+    }
+
+    while (l1 != NULL) {
+        insert(l1->element, result, resultPos);
+        resultPos = advance(result);
+        l1 = advance(l1);
+    }
+
+    while (l2 != NULL) {
+        insert(l2->element, result, resultPos);
+        resultPos = advance(resultPos);
+        l2 = advance(l2);
+    }
+
+    return result;
+}
+
+List reverseList(List L) {
+    Position prev, curr, next;
+    prev = NULL;
+    curr = L;
+    next = L->next;
+    while (next != NULL) {
+        curr->next = prev;
+        prev = curr;
+        curr = next;
+        next = next->next;
+    }
+    curr->next = prev;
+    return curr;
 }
