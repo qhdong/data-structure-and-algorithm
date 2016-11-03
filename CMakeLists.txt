@@ -12,5 +12,6 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 #set(SOURCE_FILES chapter3/linkedlist.h chapter3/linkedlist.c chapter3/exercise.c chapter3/joesphus.c)
 #set(SOURCE_FILES chapter3/joesphus.c chapter3/testLinkedList.c)
 
-set(SOURCE_FILES chapter3/linkedlist.h chapter3/linkedlist.c chapter3/testLinkedList.c)
+#set(SOURCE_FILES chapter4/searchtree.c chapter4/searchtree.h chapter4/testSearchTree.c)
+set(SOURCE_FILES chapter4/avltree.c chapter4/avltree.h chapter4/testAVLTree.c)
 add_executable(data_structure_and_algorithm ${SOURCE_FILES})
