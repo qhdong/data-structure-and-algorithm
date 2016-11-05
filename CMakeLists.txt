@@ -13,5 +13,6 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 #set(SOURCE_FILES chapter3/joesphus.c chapter3/testLinkedList.c)
 
 #set(SOURCE_FILES chapter4/searchtree.c chapter4/searchtree.h chapter4/testSearchTree.c)
-set(SOURCE_FILES chapter4/avltree.c chapter4/avltree.h chapter4/testAVLTree.c)
+#set(SOURCE_FILES chapter4/avltree.c chapter4/avltree.h chapter4/testAVLTree.c chapter5/hashmap.c chapter5/hashmap.h)
+set(SOURCE_FILES chapter5/hashtable.c chapter5/hashtable.h chapter5/prime.c chapter5/prime.h chapter5/testhashmap.c)
 add_executable(data_structure_and_algorithm ${SOURCE_FILES})
