@@ -2,6 +2,7 @@
 // Created by aaron on 16-11-14.
 //
 
+#include <stdlib.h>
 #include "sort.h"
 
 void InsertionSort(ElementType A[], size_t N) {
@@ -93,4 +94,87 @@ void HeapSort(ElementType A[], size_t N) {
         swap(&A[0], &A[i]);
         PercDown(A, 0, i);
     }
+}
+
+static void Merge(ElementType A[], ElementType TmpArray[], int lpos, int rpos, int rightEnd) {
+    int leftEnd, numElements, tmpPos;
+
+    leftEnd = rpos - 1;
+    tmpPos = lpos;
+    numElements = rightEnd - lpos + 1;
+
+    while (lpos <= leftEnd && rpos <= rightEnd) {
+        if (A[lpos] <= A[rpos]) {
+            TmpArray[tmpPos++] = A[lpos++];
+        } else {
+            TmpArray[tmpPos++] = A[rpos++];
+        }
+    }
+
+    while (lpos <= leftEnd) {
+        TmpArray[tmpPos++] = A[lpos++];
+    }
+
+    while (rpos <= rightEnd) {
+        TmpArray[tmpPos++] = A[rpos++];
+    }
+
+    for (int i = 0; i < numElements; ++i, rightEnd--) {
+        A[rightEnd] = TmpArray[rightEnd];
+    }
+}
+
+static void MSort(ElementType A[], ElementType TmpArray[], int left, int right) {
+    int center;
+    if (left < right) {
+        center = (left + right) / 2;
+        MSort(A, TmpArray, left, center);
+        MSort(A, TmpArray, center+1, right);
+        Merge(A, TmpArray, left, center+1, right);
+    }
+}
+
+void MergeSort(ElementType A[], size_t N) {
+    ElementType *TmpArray = malloc(N * sizeof(ElementType));
+    MSort(A, TmpArray, 0, N-1);
+    free(TmpArray);
+}
+
+ElementType Median3(ElementType A[], int left, int right) {
+    int center = (left + right) / 2;
+    if (A[left] > A[center]) swap(&A[left], &A[center]);
+    if (A[left] > A[right]) swap(&A[left], &A[right]);
+    if (A[center] > A[right]) swap(&A[center], &A[right]);
+    swap(&A[center], &A[right-1]);
+    return A[right-1];
+}
+
+#define Cutoff (3)
+
+static void QSort(ElementType A[], int left, int right) {
+    ElementType pivot;
+
+    if (left + Cutoff <= right) {
+        pivot = Median3(A, left, right);
+        int i = left;
+        int j = right - 1;
+        while (1) {
+            while (A[++i] < pivot);
+            while (A[--j] > pivot);
+            if (i < j) {
+                swap(&A[i], &A[j]);
+            } else {
+                break;
+            }
+        }
+        swap(&A[i], &A[right-1]);
+        QSort(A, left, i-1);
+        QSort(A, i+1, right);
+    } else {
+        InsertionSort(A+left, right-left+1);
+    }
+}
+
+void QuickSort(ElementType A[], size_t N) {
+    QSort(A, 0, N-1);
 }

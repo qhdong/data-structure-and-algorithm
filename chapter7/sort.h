@@ -14,4 +14,6 @@ void ShellSort(ElementType A[], size_t N);
 void BubbleSort(ElementType A[], size_t N);
 void SelectionSort(ElementType A[], size_t N);
 void HeapSort(ElementType A[], size_t N);
+void MergeSort(ElementType A[], size_t N);
+void QuickSort(ElementType A[], size_t N);
 #endif //DATA_STRUCTURE_AND_ALGORITHM_SORT_H

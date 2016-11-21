@@ -29,7 +29,7 @@ void printArray(int A[], int N) {
 }
 
 int main(void) {
-    const size_t N = 10;
+    const size_t N = 30;
     int* A = getSequence(N);
 
     printArray(A, N);
@@ -37,7 +37,9 @@ int main(void) {
 //    ShellSort(A, N);
 //    BubbleSort(A, N);
 //    SelectionSort(A, N);
-    HeapSort(A, N);
+//    HeapSort(A, N);
+//    MergeSort(A, N);
+    QuickSort(A, N);
     printArray(A, N);
 
 
